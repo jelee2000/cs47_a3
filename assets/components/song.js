@@ -1,79 +1,85 @@
-import { StyleSheet, View, Image, SafeAreaView, Text } from "react-native";
-import { Themes } from "../Themes";
+import { StyleSheet, View, Image, Dimensions, Text } from "react-native";
 import { millisToMinutesAndSeconds } from "../../utils";
 
 export default function SongItem( {imageurl, title, artist, albumname, duration, index} ) {
     const songlength = millisToMinutesAndSeconds(duration);  // ask about this 
     return (
-        <SafeAreaView style = {styles.item}>
-            <Text style = {styles.index}>{index}</Text>
-            <Image style = {styles.image} source = {{uri: imageurl}}/>
-            <SafeAreaView style = {styles.titleartist}>
+        <View style = {styles.item}>
+            <View style = {styles.tracklistNum}> 
+                <Text style = {styles.tracklistText}>{index}</Text> 
+            </View>
+            <View>
+                <Image style = {styles.image} source = {{uri: imageurl}}/>
+            </View>
+            <View style = {styles.titleartist}>
                 <Text numberOfLines = {1} style = {{color:'white'}}>{title}</Text>
                 <Text numberOfLines = {1} style = {{color: 'gray'}}>{artist}</Text>
-            </SafeAreaView>
-            <SafeAreaView style = {styles.albumduration}>
-                <Text numberOfLines = {1} style = {styles.album}>{albumname}</Text>
-                <Text style = {{color: 'gray', alignItems: 'flex-end'}}>{songlength}</Text>
-            </SafeAreaView>
-        </SafeAreaView>
+            </View>
+            <View style = {styles.album}>
+                <Text numberOfLines = {1} style = {{color: 'white'}}>{albumname}</Text>
+            </View>
+            <View style = {styles.durationStyle}>
+                <Text style = {{color: 'white', alignItems: 'flex-end'}}>{songlength}</Text>
+            </View>
+        </View>
     )
 }
+const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     item: {
       flexDirection: 'row',
       marginBottom: 5,
       width: '100%',
-      //flex: 1,
     },
-    index: {
-        alignItems: "flex-start",
-        flexDirection: 'row',
-        color: 'gray',
+    tracklistNum: {
         alignItems: "center",
         justifyContent: 'center',
+        width: "10%",
+        //backgroundColor: 'red',
+    },
+    tracklistText: {
+        color: 'gray',
+        fontSize: 20,
         marginHorizontal: 2,
-        width: "5%",
         //flex: 1,
     },
     image: {
-        width: '12%',
         aspectRatio: 1,
-        height: undefined,
+        //height: 50,
         marginHorizontal: 2,
+        //width: 50,
+        width: windowWidth * 0.15,
+        //width: '20%',
         alignItems: "center",
         justifyContent: 'center',
+        //backgroundColor: 'blue',
         //flex: 1.5,
-    },
-    albumduration: {
-        flexDirection: 'row',
-        alignItems: "center",
-        justifyContent: 'center',
-        width: "42%",
-        justifyContent: 'space-between',
-        resizeMode: 'contain',
-        marginHorizontal: 5,
     },
     album: {
         color: 'white',
-        //flex: 1,
-        width: "40%",
+        alignItems: "flex-start",
+        justifyContent: 'center',
+        width: "27.5%",
+        marginHorizontal: 4,
+        //backgroundColor: 'orange',
     },
     titleartist: {
         flexDirection: 'column',
         alignItems: 'flex-start',
         justifyContent: 'center',
-        marginHorizontal: 2,
-        width: "35%",
+        marginLeft: 5,
+        width: "32.5%",
+        //backgroundColor: 'gray',
         //flex: 3,
     },
     durationStyle: {
         color: 'gray',
-        width: "7%",
-        flexDirection: 'row',
-        // alignItems: "center",
-        // justifyContent: 'center',
+        width: "10%",
+        //flexDirection: 'row',
+        alignItems: "center",
+        justifyContent: 'center',
+        //backgroundColor: 'white',
         //flex: 1, 
     },
   });
