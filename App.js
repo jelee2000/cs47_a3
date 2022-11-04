@@ -23,12 +23,6 @@ export default function App() {
     </SafeAreaView>
   );
 }
-  //   return (
-  //     <SafeAreaView>
-  //       <Authbutton getSpotifyAuth = {getSpotifyAuth}/>
-  //     </SafeAreaView>
-  //   )
-  // }
 
 const styles = StyleSheet.create({
   container: {

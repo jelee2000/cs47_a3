@@ -1,6 +1,10 @@
-import { StyleSheet, SafeAreaView, Image, Text, Button, View } from "react-native";
+import { StyleSheet, Dimensions, Image, Text, Button, View } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import { getFontSize } from "../../utils";
 import { Themes, Images } from "../Themes";
+
+const windowWidth = Dimensions.get('window').width;
+const fontSize = getFontSize()
 
 export default function Authbutton( {getSpotifyAuth} ) {
   return (
@@ -24,13 +28,15 @@ const styles = StyleSheet.create({
   },
   image: {
     borderRadius: 99999,
-    height: 25,
-    width: 25,
+    height: windowWidth * 0.1,
+    width: windowWidth * 0.1,
+    //height: 25,
+    //width: 25,
     //resizeMode: 'contain'
     // dimensions object 
   },
   text: {
-    fontSize: 12,
+    fontSize: fontSize,
     color: 'white',
     paddingHorizontal: 20,
     fontWeight: "bold",

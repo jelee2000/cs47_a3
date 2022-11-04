@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView, FlatList, Image, SafeAreaView, Text, Button, View } from "react-native";
+import { StyleSheet, FlatList, Image, Text, View } from "react-native";
 import { Themes, Images } from "../Themes";
 import SongItem from "./song";
 
@@ -14,8 +14,8 @@ const renderSongItem = ({item, index}) => ( //imageurl, title, artist, albumname
 )
 
 export default function Tracklist( {tracks} ) {
-  //console.log(tracks)
-  return ( // ask about song indexes 
+
+  return ( 
     <View style = {styles.container}> 
           <View style = {styles.header}>
               <Image source = {Images.spotify} style = {styles.logo}/>
@@ -36,8 +36,6 @@ export default function Tracklist( {tracks} ) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Themes.colors.background,
-    // justifyContent: "center",
-    // alignItems: "center",
     flex: 1,
     width: '100%',
   },
@@ -56,5 +54,5 @@ const styles = StyleSheet.create({
     height: 35,
     width: 35,
     marginRight: 5,
-  }
+  },
 });
